@@ -1,3 +1,11 @@
+// display current date in the header
+var displayDate = function () {
+    var date = moment().format("dddd, MMMM Do YYYY")
+    $("#currentDay").text(date)
+    console.log(
+        "test"
+    )
+}
 var taskList = ["", "", "", "", "", "", "", "", ""]
 
 // render function to load all tasks 
@@ -58,11 +66,13 @@ var taskList = ["", "", "", "", "", "", "", "", ""]
                 })
             }
         })
-// set attributes to css classes 
-// for loop to save tasks in localstorage, bolean value to delete 
-// moment.js method to display current date and times
 
-$
+// audit timeblocks and change css
 
+// click event listener on textarea to begin edit
+
+// click event listener on save button
+
+displayDate();
 renderTasks();
 
