@@ -6,7 +6,16 @@ var displayDate = function () {
         "test"
     )
 }
-var taskList = ["", "", "", "", "", "", "", "", ""]
+
+var taskList = localStorage.getItem("taskList")
+if (taskList === null) {
+    taskList = ["", "", "", "", "", "", "", "", ""]
+}
+else{
+    var taskListArray = taskList.split(",")
+    taskList = taskListArray
+}
+
 
 // render function to load all tasks 
 // function taskBuilder () {
@@ -45,11 +54,13 @@ var taskList = ["", "", "", "", "", "", "", "", ""]
 // }
 
     function renderTasks () {
-        // $('.time-block').each(()=>{
-        //     if (time < blocktime) {
-
-        //     }
-        // })
+        $('.description').each(()=>{
+            if (time < blocktime) {
+                button.click(()=>{
+                    localStorage.setItem()
+                })
+            }
+        })
         for (let i = 0; i < taskList.length; i+=1) {
             // first is row, second is child element or tag
 
@@ -58,21 +69,28 @@ var taskList = ["", "", "", "", "", "", "", "", ""]
             $
         }
     }
-    
-        $('.time-block').each(()=>{
-            if (time < blocktime) {
-                button.click(()=>{
-                    localStorage.setItem()
-                })
-            }
-        })
 
 // audit timeblocks and change css
 
 // click event listener on textarea to begin edit
 
 // click event listener on save button
+var saveButtonClick = function(event) {
+    var btnEl = $(this)
+    console.log(btnEl)
+    var btnId = btnEl.attr("data-btn-id")
+    console.log(btnId);
+
+    var textEditEl = document.querySelector("#desc-" + btnId)
+    var newText = textEditEl.value
+    taskList[btnId] = newText
+    console.log(taskList)
+
+    localStorage.setItem("taskList", taskList)
+}
+
+$(".saveBtn").on("click", saveButtonClick)
 
 displayDate();
-renderTasks();
+// renderTasks();
 
