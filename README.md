@@ -3,6 +3,8 @@
 Keep track of your daily work schedule and goals!
 Prioritiy tasks are highlighted for you in real time!
 
+![Alt text](https://i.imgur.com/Skj9Th2.png "screenshot")
+
 ### Made with 
 - HTML
 - CSS
@@ -13,3 +15,4 @@ Prioritiy tasks are highlighted for you in real time!
 
 ### Made by
 Elijah Pascual
+

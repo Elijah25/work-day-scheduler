@@ -70,8 +70,6 @@ var saveButtonClick = function(event) {
 
 $(".saveBtn").on("click", saveButtonClick)
 
-
-
 displayDate();
 renderTasks();
 
