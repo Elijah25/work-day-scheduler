@@ -1,3 +1,4 @@
+
 // display current date in the header
 var displayDate = function () {
     var date = moment().format("dddd, MMMM Do YYYY")
@@ -17,62 +18,40 @@ else{
 }
 
 
-// render function to load all tasks 
-// function taskBuilder () {
-//     var taskRow = document.createElement("div")
-//     $(taskRow).attr("class", "row time-block")
 
-//     $(".container").append(taskRow)
-
-//     var taskColumn1 = document.createElement("div")
-//     $(taskColumn1).attr("class", "col-sm-2 hour")
-//     $(taskColumn1).html("1")
-
-//     $(".row").append(taskColumn1)
-
-//     var taskColumn2 = document.createElement("textarea")
-//     $(taskColumn2).attr("class", "col-md-8 description")
-//     $(taskColumn2).val("description")
-
-
-//     $(".row").append(taskColumn2)
-
-//     var taskColumn3 = document.createElement("button")
-//     $(taskColumn3).attr("class", "btn saveBtn col-sm-2")
-
-//     $(".row").append(taskColumn3)
-
-//     var buttonContent = document.createElement("i")
-//     $(buttonContent).html("save")
-
-//     $(".button").append(buttonContent)
-
-//     console.log("hello")
-    
-
-
-// }
-
-    function renderTasks () {
-        $('.description').each(()=>{
-            if (time < blocktime) {
-                button.click(()=>{
-                    localStorage.setItem()
-                })
-            }
-        })
-        for (let i = 0; i < taskList.length; i+=1) {
-            // first is row, second is child element or tag
-
-            taskList[i]= $(`#desc-${0}`).val()
-            
-            $
-        }
+function renderTasks () {
+    // $('.description').each(()=>{
+    //     if (time < blocktime) {
+    //         button.click(()=>{
+    //             localStorage.setItem()
+    //         })
+    //     }
+    // })
+    for (let i = 0; i < taskList.length; i+=1) {
+        // load task list array into text areas
+        $(`#desc-${i}`).val(taskList[i])
     }
+    auditTasks()
+}
 
 // audit timeblocks and change css
-
-// click event listener on textarea to begin edit
+var auditTasks = function() {
+    for (let i = 0; i < taskList.length; i+=1) {
+        var taskTime = $(`#timeId-${i}`).text()
+        var momentTaskTime = moment(taskTime, 'HHA')
+        momentTaskTime.toDate()
+        momentTaskTime.format('hh')
+        if (moment().isBefore(momentTaskTime)) {
+            $(`#desc-${i}`).addClass("future");
+        }
+        else if (moment().isAfter(momentTaskTime)) {
+            $(`#desc-${i}`).addClass("past");
+        }
+        else {
+            $(`#desc-${i}`).addClass("present");
+        }
+    }
+}
 
 // click event listener on save button
 var saveButtonClick = function(event) {
@@ -91,6 +70,8 @@ var saveButtonClick = function(event) {
 
 $(".saveBtn").on("click", saveButtonClick)
 
+
+
 displayDate();
-// renderTasks();
+renderTasks();
 
